@@ -1,0 +1,9 @@
+.Dropdown {
+  border: solid 1px #ccc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  left: 300px;
+  max-height: 300px;
+  position: absolute;
+  top: 50px;
+  width: 200px;
+}

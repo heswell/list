@@ -1,0 +1,29 @@
+.List {
+  box-sizing: content-box;
+  font-size: 14px;
+  max-height: inherit;
+  overflow: auto;
+  position: relative;
+}
+
+.List-viewport {
+  border: solid 2px red;
+  box-sizing: border-box;
+  max-height: inherit;
+  overflow: auto;
+}
+
+.List-scrollingContentContainer {
+  border: dashed 2px green;
+  box-sizing: inherit;
+  position: relative;
+}
+
+.ListItem {
+  line-height: 30px;
+  padding: 0 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
