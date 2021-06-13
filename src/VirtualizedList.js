@@ -1,7 +1,6 @@
 import {
-  memo,
+  memo
   // useEffect,
-  useRef
 } from "react";
 import { useVirtualization } from "./useVirtualization";
 import "./List.css";

@@ -1,12 +1,9 @@
 export class KeySet {
-  constructor(range) {
+  constructor(from = 0, to = 0) {
     this.keys = new Map();
     this.free = [];
     this.nextKeyValue = 0;
-    if (range) {
-      const { lo, hi, from = lo, to = hi } = range;
-      this.reset({ from, to });
-    }
+    this.reset(from, to);
   }
 
   next() {
@@ -17,16 +14,12 @@ export class KeySet {
     }
   }
 
-  reset({ from, to }) {
+  reset(from, to) {
     this.keys.forEach((keyValue, rowIndex) => {
       if (rowIndex < from || rowIndex >= to) {
         this.free.push(keyValue);
         this.keys.delete(rowIndex);
       }
-
-      // console.log(
-      //   `reset from ${from} to ${to} = ${JSON.stringify(this.keys.entries())}`
-      // );
     });
 
     const size = to - from;
@@ -43,7 +36,6 @@ export class KeySet {
   }
 
   keyFor(rowIndex) {
-    // console.log(`key = ${this.keys.get(rowIndex)}`);
     return this.keys.get(rowIndex);
   }
 }
