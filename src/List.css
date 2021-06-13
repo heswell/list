@@ -22,8 +22,18 @@
 .ListItem {
   line-height: 30px;
   padding: 0 12px;
+}
+
+/* Virtualized list items */
+.List-viewport .ListItem {
   position: absolute;
   top: 0;
   left: 0;
   will-change: transform;
+}
+
+.ListHeader {
+  background-color: yellow;
+  position: sticky;
+  top: 0;
 }

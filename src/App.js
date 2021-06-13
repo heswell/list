@@ -1,12 +1,21 @@
 // import { Profiler } from "react";
-// import { List } from "./List";
-import { List } from "./VirtualizedList";
+import { List } from "./List";
+// import { List } from "./VirtualizedList";
 import "./styles.css";
 
 const data = [];
+let listItems;
 for (let i = 0; i < 1000; i++) {
-  data.push(`Item ${i + 1}`);
+  if (i % 10 === 0) {
+    data.push({
+      label: `Group ${data.length + 1}`,
+      listItems: (listItems = [])
+    });
+  }
+  listItems.push(`Item ${i + 1}`);
 }
+
+console.log(JSON.stringify(data, null, 2));
 
 // function onRenderCallback(
 //   id, // the "id" prop of the Profiler tree that has just committed
