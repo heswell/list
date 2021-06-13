@@ -5,7 +5,7 @@ import {
 import { useVirtualization } from "./useVirtualization";
 import "./List.css";
 
-const ListItem = memo(({ children, offset }) => {
+export const ListItem = memo(({ children, offset }) => {
   // useEffect(() => {
   //   console.log("ListItem mounted");
   //   return () => console.log("ListItem unmounted");
@@ -30,8 +30,23 @@ const ListItem = memo(({ children, offset }) => {
   );
 });
 
-export const List = ({ data }) => {
-  const [viewportRef, rows, contentHeight, onScroll] = useVirtualization(data);
+export const List = ({ source }) => {
+  const [viewportRef, data, contentHeight, onScroll] = useVirtualization(
+    source
+  );
+
+  const renderListItems = () => {
+    const listItems = [];
+    for (let [key, offset, item] of data) {
+      listItems.push(
+        <ListItem key={key} offset={offset}>
+          {item}
+        </ListItem>
+      );
+    }
+    return listItems;
+  };
+
   return (
     <div className="List">
       <div className="List-viewport" onScroll={onScroll} ref={viewportRef}>
@@ -39,11 +54,7 @@ export const List = ({ data }) => {
           className="List-scrollingContentContainer"
           style={{ height: contentHeight }}
         >
-          {rows.map(([key, offset, item]) => (
-            <ListItem key={key} offset={offset}>
-              {item}
-            </ListItem>
-          ))}
+          {renderListItems()}
         </div>
       </div>
     </div>

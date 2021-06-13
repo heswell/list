@@ -1,4 +1,4 @@
-import { Profiler } from "react";
+// import { Profiler } from "react";
 // import { List } from "./List";
 import { List } from "./VirtualizedList";
 import "./styles.css";
@@ -28,7 +28,7 @@ export default function App() {
   return (
     <div className="Dropdown">
       {/* <Profiler id="List" onRender={onRenderCallback}> */}
-      <List data={data} />
+      <List source={data} />
       {/* </Profiler> */}
     </div>
   );
